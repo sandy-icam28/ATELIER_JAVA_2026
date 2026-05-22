@@ -20,6 +20,17 @@
 <%-- Boucle for pour afficher une ligne d'étoiles --%>
     <%int cpt = Integer.parseInt(valeur); %>
     <p>
+    <% for (int ligne = 1; ligne <= cpt; ligne++) { %>
+    <p>
+    <% for (int i = 1; i <= cpt; i++) { %>
+        <%= "*" %>
+    <% } %>
+    </p>
+<% } %>
+
+<%-- Boucle for pour afficher un carrée d'étoiles --%>
+    <%int cpt = Integer.parseInt(valeur); %>
+    <p>
     <% for (int i = 1; i <= cpt; i++) { %>
        <%= "*" %>
     <% } %>
