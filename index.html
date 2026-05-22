@@ -1,29 +1,274 @@
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-<title>Java</title>
-<meta charset="UTF-8">  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atelier Java - Exercices de Programmation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: -1px;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .user-greeting {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .user-greeting strong {
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        .exercises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .exercise-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        .exercise-card:nth-child(1) { animation-delay: 0.1s; }
+        .exercise-card:nth-child(2) { animation-delay: 0.2s; }
+        .exercise-card:nth-child(3) { animation-delay: 0.3s; }
+        .exercise-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .exercise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .exercise-card:hover::before {
+            left: 100%;
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .exercise-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .exercise-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .exercise-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .exercise-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .exercise-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .exercise-link:active {
+            transform: scale(0.98);
+        }
+
+        /* Couleurs uniques pour chaque carte */
+        .exercise-card:nth-child(1) {
+            border-left: 5px solid #FF6B6B;
+        }
+        .exercise-card:nth-child(1) .exercise-link {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF4757 100%);
+        }
+
+        .exercise-card:nth-child(2) {
+            border-left: 5px solid #4ECDC4;
+        }
+        .exercise-card:nth-child(2) .exercise-link {
+            background: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+        }
+
+        .exercise-card:nth-child(3) {
+            border-left: 5px solid #45B7D1;
+        }
+        .exercise-card:nth-child(3) .exercise-link {
+            background: linear-gradient(135deg, #45B7D1 0%, #2196F3 100%);
+        }
+
+        .exercise-card:nth-child(4) {
+            border-left: 5px solid #F7B731;
+        }
+        .exercise-card:nth-child(4) .exercise-link {
+            background: linear-gradient(135deg, #F7B731 0%, #F59E0B 100%);
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+            font-size: 0.95rem;
+            margin-top: 50px;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header p {
+                font-size: 1.1rem;
+            }
+
+            .exercises-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .exercise-card {
+                padding: 25px;
+            }
+        }
+    </style>
 </head>
-<body bgcolor=white>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Atelier Java</h1>
+            <p>Maîtrisez les fondamentaux de la programmation</p>
+            <div class="user-greeting">
+                Bienvenue <strong>Nom Prénom</strong>
+            </div>
+        </div>
 
-<table border="0">
-<tr>
-<td>
-</td>
-<td>
-<h1>Exercices de programmation en JSP (Java)</h1>
-<p>Ceci est votre page d'exercices Java : Nom Prénom
-</td>
-</tr>
-</table>
-<h2>Liste de vos exercices</h2>
-<p>
-<ol>
-<li>Série d'exercices sur les boucles : <a href="lesboucles.jsp"> Les boucles</a>
-<li>Série d'exercices sur les conditions : <a href="lesconditions.jsp"> Les conditions</a>
-<li>Série d'exercices sur les chaines de caractères : <a href="leschaines.jsp"> Les String</a>
-<li>Série d'exercices sur les tableaux : <a href="lestableaux.jsp"> Les tableaux</a>
-</ol>
+        <div class="exercises-grid">
+            <a href="lesboucles.jsp" class="exercise-card">
+                <span class="exercise-icon">🔄</span>
+                <h2 class="exercise-title">Les Boucles</h2>
+                <p class="exercise-description">Maîtrisez les boucles for, while et do-while avec des exercices progressifs.</p>
+                <span class="exercise-link">Commencer →</span>
+            </a>
 
+            <a href="lesconditions.jsp" class="exercise-card">
+                <span class="exercise-icon">🔀</span>
+                <h2 class="exercise-title">Les Conditions</h2>
+                <p class="exercise-description">Explorez les instructions if, else if, switch et les opérateurs logiques.</p>
+                <span class="exercise-link">Commencer →</span>
+            </a>
+
+            <a href="leschaines.jsp" class="exercise-card">
+                <span class="exercise-icon">📝</span>
+                <h2 class="exercise-title">Les Chaînes</h2>
+                <p class="exercise-description">Apprenez à manipuler les chaînes de caractères et les méthodes String.</p>
+                <span class="exercise-link">Commencer →</span>
+            </a>
+
+            <a href="lestableaux.jsp" class="exercise-card">
+                <span class="exercise-icon">📊</span>
+                <h2 class="exercise-title">Les Tableaux</h2>
+                <p class="exercise-description">Pratiquez les opérations sur tableaux et l'indexation.</p>
+                <span class="exercise-link">Commencer →</span>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>💡 Complétez tous les exercices pour maîtriser Java</p>
+        </div>
+    </div>
 </body>
 </html>
 
