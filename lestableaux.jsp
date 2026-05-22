@@ -21,9 +21,9 @@
        } %>
 
     <p>Le tableau contient <%= nombres.length %> valeurs<br/>
-    Chiffre 1 : <%= nombres[0] %><br/>
-    Chiffre 2 : <%= nombres[1] %><br/>
-    Chiffre 3 : <%= nombres[2] %></p>
+    <% for (int i = 0; i < nombres.length; i++) { %>
+    <p>Chiffre <%= i + 1 %> : <%= nombres[i] %></p>
+    <% } %>
 
     <h2>Exercice 1 : Le carré de la première valeur</h2>
     <p><%= nombres[0] %>² = <%= nombres[0] * nombres[0] %></p>
