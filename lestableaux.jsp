@@ -22,7 +22,7 @@
 
     <p>Le tableau contient <%= nombres.length %> valeurs<br/>
     <% for (int i = 0; i < nombres.length; i++) { %>
-    <p>Chiffre <%= i + 1 %> : <%= nombres[i] %></br></p>
+    <p>Chiffre <%= i + 1 %> : <%= nombres[i] %></p>
     <% } %>
 
     <h2>Exercice 1 : Le carré de la première valeur</h2>
