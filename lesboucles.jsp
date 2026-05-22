@@ -20,18 +20,23 @@
 <%-- Boucle for pour afficher une ligne d'étoiles --%>
     <%int cpt = Integer.parseInt(valeur); %>
     <p>
-    <% for (int ligne = 1; ligne <= cpt; ligne++) { %>
+    <% for (int i = 1; i <= cpt; i++) { %>
+       <%= "*" %>
+    <% } %>
+    </p>
+
+
+<h2>Exercice 1 : Le carré d'étoiles</h2>
+<p>Ecrire le code afin de produire un carré d'étoile</p>
+<% int cpt = Integer.parseInt(valeur); %>
+
+<% for (int ligne = 1; ligne <= cpt; ligne++) { %>
     <p>
     <% for (int i = 1; i <= cpt; i++) { %>
         <%= "*" %>
     <% } %>
     </p>
 <% } %>
-
-
-<h2>Exercice 1 : Le carré d'étoiles</h2>
-<p>Ecrire le code afin de produire un carré d'étoile</p>
-
 
 <h2>Exercice 2 : Triangle rectangle gauche</h2>
 <p>Ecrire le code afin de produire un triangle rectangle aligné sur la gauche</p>
