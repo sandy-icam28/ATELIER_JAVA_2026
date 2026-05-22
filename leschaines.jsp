@@ -18,7 +18,7 @@
     <p>Le 3° caractère de votre chaine est la lettre <%= caractereExtrait %></p>
     <% String sousChaine = chaine.substring(2, 6); %>
     <p>Une sous chaine de votre texte : <%= sousChaine %></p>
-    <% int position = chaine.indexOf('e'); %>
+    <% int position = chaine.indexOf('e')+1; %>
     <p>Votre premier "e" est en : <%= position %></p>
 
     <h2>Exercice 1 : Combien de 'e' ?</h2>
